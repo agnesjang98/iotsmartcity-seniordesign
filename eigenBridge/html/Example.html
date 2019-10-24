@@ -1,0 +1,299 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Description</title><meta name="generator" content="MATLAB 8.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2016-12-31"><meta name="DC.source" content="Example.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Description</h1><!--introduction--><p>The calculation of the eigen-frequencies and mode shapes of a suspension bridge using the present Matlab code is based on the theory of continuous beam and the theory of shallow cables. The mode shapes are obtained using Galerkin's method where a series expansion is used. The method was first applied by  Sigbj&oslash;rnsson &amp; Hjorth-Hansen [1], then E. Str&oslash;mmen [2] expanded their works to the vertical and torsional motion. Any error, modification, improvement of the present code is warmly welcomed.</p><p>The bridge is a represented as a horizontal streamlined beam, where the z axis is the vertical axis, the y axis is the along-beam axis and the x axis is the cross-beam axis. The three motions of interests (lateral,vertical, and torsional) and both symmetric and assymetric modes are computed.</p><p>References:</p><p>[1] Sigbj&oslash;rnsson, R., Hjorth-Hansen, E.: Along wind response of suspension bridges with special reference to stiffening by horizontal cables. Engineering Structures 3, 27&#8211;37 (1981)</p><p>[2] Structural Dynamics, Einar N Str&oslash;mmen, Springer International Publishing, 2013. ISBN: 3319018019, 9783319018010</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Characteristics of the single span suspension bridge</a></li><li><a href="#2">Application of the function eigenBridge</a></li><li><a href="#3">Lateral motion</a></li><li><a href="#4">Vertical motion</a></li><li><a href="#5">Torsional motion</a></li></ul></div><h2>Characteristics of the single span suspension bridge<a name="1"></a></h2><p>The example belows is directly directly taken from the book of E.N. Str&oslash;mmen "STRUCTURAL DYNAMICS" who explains in details the analytical calculation carried out. I only transcripted the calculation into a Matlab script, and therefore, all credits go to R. Sigbj&oslash;rnsson, E. Hjorth-Hansen and E.N. Str&oslash;mmen.</p><p>The variable Bridge is a structure with the fields described below</p><pre class="codeinput">clear <span class="string">all</span>;close <span class="string">all</span>;clc
+<span class="comment">% GENERAL INPUTS</span>
+Bridge.L = 1250 ; <span class="comment">% length of main span (m)</span>
+Bridge.E = 2e11; <span class="comment">% young modulus of bridge girder - steel here -  (Pa)</span>
+Bridge.Ec = 2e11; <span class="comment">% young modulus of bridge cables - steel here -  (Pa)</span>
+Bridge.g = 9.81; <span class="comment">% acceleration of gravity</span>
+Bridge.m =9000 ; <span class="comment">% lineic mass of girder (kg/m)</span>
+Bridge.mc =1900 ; <span class="comment">% lineic mass of cable (kg/m)</span>
+Bridge.Ac = 0.22 ; <span class="comment">% cross section main cable (m^2)</span>
+Bridge.ec= 120; <span class="comment">% sag (m)</span>
+Bridge.hm = 2.75 ; <span class="comment">% hanger length at mid span (m)</span>
+Bridge.hr = 1.8; <span class="comment">% distance between shear center and hanger attachment</span>
+Bridge.bc = 15; <span class="comment">% distance between the main cables (m)</span>
+Bridge.H_cable = 1.12e8; <span class="comment">% horizontal cable tensile force</span>
+<span class="comment">% analytical expression of tensile force can be obtained using:</span>
+<span class="comment">% Bridge.H_cable = Bridge.m*Bridge.g*Bridge.L^2/(16*Bridge.ec)*...</span>
+<span class="comment">%     (1+2*Bridge.mc/Bridge.m*(1+4/3*(Bridge.ec/Bridge.L)^2));</span>
+<span class="comment">% but H_cables is slightly different in that case</span>
+
+<span class="comment">% Discretisation of bridge main span in Nyy points</span>
+Bridge.Nyy=100;
+Bridge.x = linspace(0,1,Bridge.Nyy);
+
+<span class="comment">% ADDITIONAL INPUTS FOR LATERAL MODES</span>
+<span class="comment">% Moment of inertia with respect to bending about y axis</span>
+<span class="comment">% (used for lateral bridge analysis)</span>
+Bridge.Iz = 16.6667;
+
+<span class="comment">% ADDITIONAL INPUTS FOR VERTICAL MODES</span>
+<span class="comment">% Moment of inertia with respect to bending about z</span>
+<span class="comment">% axis (used for vertical bridge analysis)</span>
+Bridge.Iy = 0.9524;
+
+<span class="comment">% ADDITIONAL INPUTS FOR TORSIONAL MODES</span>
+
+<span class="comment">% cross section rotational mass (kg.m^2/m)</span>
+Bridge.m_theta = 250000;
+
+<span class="comment">% St venant Warping constant</span>
+<span class="comment">% (used for torsional bridge analysis)--</span>
+<span class="comment">% alternative: use EIw called "warping resistance".</span>
+Bridge.Iw = 4.2857;
+
+<span class="comment">% product of St venant torsion constant It</span>
+<span class="comment">% and Modulus of elasticity in shear G (used for torsional bridge analysis)</span>
+<span class="comment">% another expression for GIt is "torsional stifness"</span>
+Bridge.GIt = 0.2e12;
+</pre><h2>Application of the function eigenBridge<a name="2"></a></h2><pre class="codeinput">Nmodes=4; <span class="comment">% number of modes to be computed</span>
+<span class="comment">% call of the function "eigenBridge".</span>
+[wn,phi,phi_cables] = eigenBridge(Bridge,Nmodes);
+<span class="comment">% wn: eigen frequenciers (rad/s)</span>
+<span class="comment">% phi: mode shapes of the deck</span>
+<span class="comment">% phi_cables: mode shapes of the cables ( alteral displacement only)</span>
+</pre><h2>Lateral motion<a name="3"></a></h2><p>The sign of the mode shapes depends on the value of Nyy, but has no consequences  on the relevancy of the calculation unless Nyy is too low</p><pre class="codeinput">figure
+<span class="keyword">for</span> ii=1:Nmodes,
+subplot(Nmodes,1,ii)
+hold <span class="string">on</span>
+plot(Bridge.x,squeeze(phi(1,ii,:)))
+plot(Bridge.x,squeeze(phi_cables(ii,:)),<span class="string">'r'</span>)
+<span class="keyword">if</span> ii==1,
+legend(<span class="string">'deck'</span>,<span class="string">'cables'</span>,<span class="string">'location'</span>,<span class="string">'south'</span>)
+<span class="keyword">end</span>
+title([<span class="string">'w_'</span>,num2str(ii),<span class="string">' = '</span>,num2str(wn(1,ii),3),<span class="string">' rad/s'</span>]);
+grid <span class="string">on</span>;box <span class="string">on</span>
+ylim([-1.1,1.1])
+<span class="keyword">end</span>
+set(gcf,<span class="string">'color'</span>,<span class="string">'w'</span>);
+</pre><img vspace="5" hspace="5" src="Example_01.png" alt=""> <h2>Vertical motion<a name="4"></a></h2><p>The sign of the mode shapes depends on the value of Nyy, but has no consequences  on the relevancy of the calculation unless Nyy is too low</p><pre class="codeinput">figure
+<span class="keyword">for</span> ii=1:Nmodes,
+    subplot(Nmodes,1,ii)
+    hold <span class="string">on</span>
+    plot(Bridge.x,squeeze(phi(2,ii,:)))
+    title([<span class="string">'w_'</span>,num2str(ii),<span class="string">' = '</span>,num2str(wn(2,ii),3),<span class="string">' rad/s'</span>]);
+    grid <span class="string">on</span>;box <span class="string">on</span>
+    ylim([-1.1,1.1])
+<span class="keyword">end</span>
+set(gcf,<span class="string">'color'</span>,<span class="string">'w'</span>);
+</pre><img vspace="5" hspace="5" src="Example_02.png" alt=""> <h2>Torsional motion<a name="5"></a></h2><p>The sign of the mode shapes depends on the value of Nyy, but has no consequences  on the relevancy of the calculation unless Nyy is too low</p><pre class="codeinput">figure
+<span class="keyword">for</span> ii=1:Nmodes,
+    subplot(Nmodes,1,ii)
+    hold <span class="string">on</span>
+    plot(Bridge.x,squeeze(phi(3,ii,:)))
+    title([<span class="string">'w_'</span>,num2str(ii),<span class="string">' = '</span>,num2str(wn(3,ii),3),<span class="string">' rad/s'</span>]);
+    grid <span class="string">on</span>;box <span class="string">on</span>
+    ylim([-1.1,1.1])
+<span class="keyword">end</span>
+set(gcf,<span class="string">'color'</span>,<span class="string">'w'</span>);
+</pre><img vspace="5" hspace="5" src="Example_03.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Description
+% The calculation of the eigen-frequencies and mode shapes of a suspension
+% bridge using the present Matlab code is based on the theory of continuous
+% beam and the theory of shallow cables. The mode shapes are obtained using
+% Galerkin's method where a series expansion is used.
+% The method was first applied by  Sigbjørnsson & Hjorth-Hansen [1], then
+% E. Strømmen [2] expanded their works to the vertical and torsional motion.
+% Any error, modification, improvement of the present code is warmly welcomed.
+%
+% The bridge is a represented as a horizontal streamlined beam, 
+% where the z axis is the vertical axis, the y axis is the along-beam axis 
+% and the x axis is the cross-beam axis. The three motions of
+% interests (lateral,vertical, and torsional) and both symmetric and 
+% assymetric modes are computed.
+%
+% References:
+% 
+% [1] Sigbjørnsson, R., Hjorth-Hansen, E.: 
+% Along wind response of suspension bridges
+% with special reference to stiffening by horizontal cables.
+% Engineering Structures 3, 27–37 (1981)
+%
+% [2] Structural Dynamics, Einar N Strømmen,
+% Springer International Publishing,
+% 2013. ISBN: 3319018019, 9783319018010
+%% Characteristics of the single span suspension bridge
+% The example belows is directly directly taken from the book of
+% E.N. Strømmen "STRUCTURAL DYNAMICS" who explains in details the
+% analytical calculation carried out. I only transcripted the calculation
+% into a Matlab script, and therefore, all credits go to R. Sigbjørnsson,
+% E. Hjorth-Hansen and E.N. Strømmen.            
+% 
+% The variable Bridge is a structure with the fields described below
+clear all;close all;clc
+% GENERAL INPUTS
+Bridge.L = 1250 ; % length of main span (m)
+Bridge.E = 2e11; % young modulus of bridge girder - steel here -  (Pa)
+Bridge.Ec = 2e11; % young modulus of bridge cables - steel here -  (Pa)
+Bridge.g = 9.81; % acceleration of gravity
+Bridge.m =9000 ; % lineic mass of girder (kg/m)
+Bridge.mc =1900 ; % lineic mass of cable (kg/m)
+Bridge.Ac = 0.22 ; % cross section main cable (m^2)
+Bridge.ec= 120; % sag (m)
+Bridge.hm = 2.75 ; % hanger length at mid span (m)
+Bridge.hr = 1.8; % distance between shear center and hanger attachment
+Bridge.bc = 15; % distance between the main cables (m)
+Bridge.H_cable = 1.12e8; % horizontal cable tensile force
+% analytical expression of tensile force can be obtained using:
+% Bridge.H_cable = Bridge.m*Bridge.g*Bridge.L^2/(16*Bridge.ec)*...
+%     (1+2*Bridge.mc/Bridge.m*(1+4/3*(Bridge.ec/Bridge.L)^2));
+% but H_cables is slightly different in that case
+
+% Discretisation of bridge main span in Nyy points
+Bridge.Nyy=100;
+Bridge.x = linspace(0,1,Bridge.Nyy); 
+
+% ADDITIONAL INPUTS FOR LATERAL MODES
+% Moment of inertia with respect to bending about y axis 
+% (used for lateral bridge analysis)
+Bridge.Iz = 16.6667; 
+
+% ADDITIONAL INPUTS FOR VERTICAL MODES
+% Moment of inertia with respect to bending about z 
+% axis (used for vertical bridge analysis)
+Bridge.Iy = 0.9524; 
+
+% ADDITIONAL INPUTS FOR TORSIONAL MODES
+
+% cross section rotational mass (kg.m^2/m)
+Bridge.m_theta = 250000; 
+
+% St venant Warping constant 
+% (used for torsional bridge analysis)REPLACE_WITH_DASH_DASH 
+% alternative: use EIw called "warping resistance".
+Bridge.Iw = 4.2857; 
+
+% product of St venant torsion constant It 
+% and Modulus of elasticity in shear G (used for torsional bridge analysis)
+% another expression for GIt is "torsional stifness"
+Bridge.GIt = 0.2e12; 
+
+%% Application of the function eigenBridge
+
+Nmodes=4; % number of modes to be computed
+% call of the function "eigenBridge". 
+[wn,phi,phi_cables] = eigenBridge(Bridge,Nmodes);
+% wn: eigen frequenciers (rad/s)
+% phi: mode shapes of the deck
+% phi_cables: mode shapes of the cables ( alteral displacement only)
+
+%% Lateral motion
+% The sign of the mode shapes depends on the value of Nyy, 
+% but has no consequences  on the relevancy of the calculation unless Nyy
+% is too low
+figure
+for ii=1:Nmodes,
+subplot(Nmodes,1,ii)
+hold on
+plot(Bridge.x,squeeze(phi(1,ii,:)))
+plot(Bridge.x,squeeze(phi_cables(ii,:)),'r')
+if ii==1,
+legend('deck','cables','location','south')
+end
+title(['w_',num2str(ii),' = ',num2str(wn(1,ii),3),' rad/s']);
+grid on;box on
+ylim([-1.1,1.1])
+end
+set(gcf,'color','w');
+
+%% Vertical motion
+% The sign of the mode shapes depends on the value of Nyy, 
+% but has no consequences  on the relevancy of the calculation unless Nyy
+% is too low
+
+figure
+for ii=1:Nmodes,
+    subplot(Nmodes,1,ii)
+    hold on
+    plot(Bridge.x,squeeze(phi(2,ii,:)))
+    title(['w_',num2str(ii),' = ',num2str(wn(2,ii),3),' rad/s']);
+    grid on;box on
+    ylim([-1.1,1.1])
+end
+set(gcf,'color','w');
+
+%% Torsional motion
+% The sign of the mode shapes depends on the value of Nyy, 
+% but has no consequences  on the relevancy of the calculation unless Nyy
+% is too low
+
+figure
+for ii=1:Nmodes,
+    subplot(Nmodes,1,ii)
+    hold on
+    plot(Bridge.x,squeeze(phi(3,ii,:)))
+    title(['w_',num2str(ii),' = ',num2str(wn(3,ii),3),' rad/s']);
+    grid on;box on
+    ylim([-1.1,1.1])
+end
+set(gcf,'color','w');
+##### SOURCE END #####
+--></body></html>
