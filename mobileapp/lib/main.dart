@@ -1,3 +1,20 @@
+// import 'package:flutter/material.dart';
+import './add_polyline.dart';
+
+// void main() => runApp(new MyApp());
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return new MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter Code Snippets',
+//       theme: new ThemeData(primarySwatch: Colors.red),
+//       home: new AddPolylines(),
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -50,13 +67,21 @@ class HomeScreen extends StatelessWidget {
                 print("response");
                 var resp = await req();
                 print(resp);
+                var polyLineIds = await getRoute();
+                print(polyLineIds);
                 var lat = double.parse(latController.text);
                 var long = double.parse(longController.text);
                 var coordinates = LatLng(lat, long);
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (_) => MapView(coordinates)
+                //     )
+                // );
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => MapView(coordinates)
+                    builder: (_) => AddPolylines()
                     )
                 );
   
