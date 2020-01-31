@@ -11,8 +11,10 @@ ECS_table = {("A", 1): 1.0, ("B", 1): 1.0, ("C", 1): 1.1, ("D", 1): 1.3, ("E", 1
             ("A", 5): 0, ("B", 5): 5.0, ("C", 5): 5.0, ("D", 5): 5.0, ("E", 5): 5.0,}
 
 # the maximum number of cars that can safely drive over a bridge at any given time
+# weight in kg
 max_cars = 100
-# severity values (ratio from # of cars)
+max_weight = max_cars*1800
+# severity values (ratio from weight of cars)
 sev_1 = 0
 sev_2 = int(max_cars/4)
 sev_3 = 2*int(max_cars/4)
@@ -33,7 +35,7 @@ extent = {0: "A", 1: "B", 2: "C", 3: "D", 4: "E"}
 bridge_extent = extent[age]
 
 # STEP 1: retrieve ECS VALUE
-# TODO: modify the severity values based on the # of cars passing through each point
+# TODO: modify the severity values based on the weight of cars passing through each point
 A_severity = severity[sev_2]
 B_severity = severity[sev_3]
 C_severity = severity[sev_4]
