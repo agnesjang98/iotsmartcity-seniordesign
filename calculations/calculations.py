@@ -2,6 +2,7 @@
 # based on the calculations from
 # https://www.fhwa.dot.gov/publications/research/infrastructure/structures/bridge/15081/15081.pdf
 # for UK
+import requests
 
 # ECS  table values
 ECS_table = {("A", 1): 1.0, ("B", 1): 1.0, ("C", 1): 1.1, ("D", 1): 1.3, ("E", 1): 1.7,
@@ -106,3 +107,10 @@ BCI = 100 - (2 * (pow(BCS, 2) + (6.5 * BCS) - 7.5))
 print("STEP 5")
 print("BCI: " + str(BCI))
 print()
+
+# INSERT INTO BACKEND DB
+
+url = "https://smart-city-266807.appspot.com/bci"
+data = {"id": "0", "bci": BCI}
+r = requests.post(url = url, json = data)
+print(r.content)
