@@ -29,6 +29,7 @@ env.yaml
 .pub-cache/
 .pub/
 /build/
+**/lib/token.dart
 
 # Android related
 **/android/**/gradle-wrapper.jar
