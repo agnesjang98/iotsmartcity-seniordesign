@@ -140,6 +140,6 @@ def severity(num_cars):
     print()
 
     url = "https://smart-city-266807.appspot.com/bci"
-    data = {"id": "0", "bci": BCI}
+    data = {"id": "0", "bci": BCI, "latitude": 33.657033, "longitude": -117.847138}
     r = requests.post(url = url, json = data)
     # print(r.content)
